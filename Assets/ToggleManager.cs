@@ -6,19 +6,21 @@ using UnityEngine;
 public class ToggleManager : MonoBehaviour
 {
     public TextMeshProUGUI buttonText;
-    public GameObject adminPage;
-    public GameObject userPage;
+    public GameObject page1;
+    public GameObject page2;
+    public string buttonText1;
+    public string buttonText2;
     public void Toggle()
     {
-        userPage.SetActive(adminPage.activeSelf);
-        adminPage.SetActive(!adminPage.activeSelf);
-        if (userPage.activeSelf)
+        page2.SetActive(page1.activeSelf);
+        page1.SetActive(!page1.activeSelf);
+        if (page2.activeSelf)
         {
-            buttonText.text = "Admin";
+            buttonText.text = buttonText1;
         }
         else
         {
-            buttonText.text = "User";
+            buttonText.text = buttonText2;
         }
     }
 }

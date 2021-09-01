@@ -19,12 +19,19 @@ public class Database : SerializedMonoBehaviour
     private List<Person> persons = new List<Person>();
     private List<Person> removedPersons = new List<Person>();
     private List<Venue> venues = new List<Venue>();
+    private List<Match> matches = new List<Match>();
+    private Dictionary<VenueName, Sprite> venueNameToSprite = new Dictionary<VenueName, Sprite>();
     private void Awake()
     {
         foreach (VenueScriptableObject item in venuesToInitiate)
         {
             venues.Add(new Venue { name = item.venueName, sprite = item.image });
+            venueNameToSprite[item.venueName] = item.image;
         }
+    }
+    internal List<Match> GetMatches()
+    {
+        return matches;
     }
     internal List<Venue> GetVenues()
     {
@@ -59,6 +66,15 @@ public class Database : SerializedMonoBehaviour
                 $"{(person.priority5 != VenueName.None ? venueNameToAbbreviation[person.priority5] : "")};\n";
 
             totalString += personString;
+        }
+
+        totalString += "\n";
+
+        foreach (Match pair in matches)
+        {
+            string pairString = $"{pair.person1.name} vs {pair.person2.name} on {pair.venueName};\n";
+
+            totalString += pairString;
         }
 
         GUIUtility.systemCopyBuffer = totalString;
@@ -147,6 +163,7 @@ public class Database : SerializedMonoBehaviour
 
             this.persons = persons;
             removedPersons.Clear();
+            matches.Clear();
 
             UpdateVenues();
 
@@ -166,6 +183,12 @@ public class Database : SerializedMonoBehaviour
             inputField.text = "";
         }
     }
+
+    internal void SetPair(Person person1, Person person2, VenueName venueName)
+    {
+        matches.Add(new Match { person1 = person1, person2 = person2, venueName = venueName, venueSprite = venueNameToSprite[venueName] });
+    }
+
     internal void RemovePerson(Person person, VenueName venueName)
     {
         if (person.priority1.Contains(venueName))

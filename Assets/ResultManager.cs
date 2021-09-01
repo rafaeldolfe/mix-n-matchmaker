@@ -12,6 +12,7 @@ public class ResultManager : MonoBehaviour
     public TextMeshProUGUI firstPersonText;
     public TextMeshProUGUI secondPersonText;
     public TextMeshProUGUI venueInfoText;
+    public GameObject pressAnyKey;
     internal void ShowResult(Person firstPerson, Person secondPerson, VenueName venueName, Sprite venueSprite)
     {
         container.SetActive(true);
@@ -24,5 +25,11 @@ public class ResultManager : MonoBehaviour
     internal void Hide()
     {
         container.SetActive(false);
+        pressAnyKey.SetActive(false);
+    }
+
+    internal void ShowPressAnyKey()
+    {
+        pressAnyKey.SetActive(true);
     }
 }

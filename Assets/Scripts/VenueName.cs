@@ -12,5 +12,6 @@
     Redwoods,
     Teien,
     Terrace,
-    Veranda
+    Veranda,
+    Balcony
 }

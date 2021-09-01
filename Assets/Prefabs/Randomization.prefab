@@ -3697,6 +3697,7 @@ MonoBehaviour:
   personListEntryPrefab: {fileID: 8129348027991711946, guid: 2f1f668bca4f5164fbff166c19c759bd, type: 3}
   resultManager: {fileID: 1896694649830066089}
   matchFailedPrefab: {fileID: 4431569479580578281, guid: 94bfb1d55ca974142a1b7ce94b0e2781, type: 3}
+  matchFixingPrefab: {fileID: 4431569479580578281, guid: 5e28fbabc6893e34a80e870c682babf5, type: 3}
   canvas: {fileID: 0}
   chooseCandidateSound: {fileID: 8300000, guid: 78921c03f84678d408d122747fdde379, type: 3}
   highlightSound: {fileID: 8300000, guid: 8a0332b75cb45fb429693996cbf987be, type: 3}

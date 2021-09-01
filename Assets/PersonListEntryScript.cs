@@ -15,6 +15,7 @@ public class PersonListEntryScript : MonoBehaviour
 
     private Color originalColor;
     private Color originalTextColor;
+    private bool isPicked;
     private void Awake()
     {
         originalColor = image.color;
@@ -38,10 +39,16 @@ public class PersonListEntryScript : MonoBehaviour
     {
         image.color = pickedColor;
         nameText.color = pickedColor;
+        isPicked = true;
     }
     internal void Unhighlight()
     {
         image.color = originalColor;
         nameText.color = originalTextColor;
+    }
+
+    internal bool IsPicked()
+    {
+        return isPicked;
     }
 }
